@@ -6,4 +6,6 @@ public interface MemberDao {
 
 	void join(MemberDto memberDto);
 
+	MemberDto login(String memberId, String memberPw);
+
 }

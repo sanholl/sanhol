@@ -29,6 +29,7 @@
 	<main>
 
 		<!-- 헤더(header) -->
+		<h4>로그인세션:${memberId}</h4>
 		<header>
 			<h1>
 				<a class="link" href="${root}">소모임 연습용 홈페이지</a>
