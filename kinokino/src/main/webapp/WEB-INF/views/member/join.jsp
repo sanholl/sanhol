@@ -11,28 +11,113 @@
 		// 처음 페이지를 제외하고 모두 숨김 처리
 		move(index);
 		
+		// mbti 검사 변수
+		var count1 = 0;
+		var count2 = 0;
+		var count3 = 0;
+		var count4 = 0;
+		var count5 = 0;
+		
+		// mbti 결과 저장 변수
+		var mbti1;
+		var mbti2;
+		var mbti3;
+		var mbti4;
 		// 다음 버튼을 누르면 다음 페이지가 나오도록 구현
 		$(".btn-next").not(":last").click(function(){
 			move(++index);
+			console.log(index); // 확인용
+			
+			if(index == 5){
+				$(".answer").each(function(){
+					console.log($(this).text());
+					
+					if($(this).text() == 'E'){
+						count1++;
+					}
+					else if($(this).text() == 'N'){
+						count2++;
+					}
+					else if($(this).text() == 'F'){
+						count3++;
+					}
+					else if($(this).text() == 'P'){
+						count4++;
+					}
+					else{
+						count5++;
+					}
+				});
+			}
+				console.log(count1);
+				console.log(count2);
+				console.log(count3);
+				console.log(count4);
+				console.log(count5);
+			
+			// mbti 결과 도출
+			if(count1 >= 2){
+				mbti1 = 'E';
+			}
+			else{
+				mbti1 = 'I';
+			}
+			
+			if(count2 >= 2){
+				mbti2 = 'N';
+			}
+			else{
+				mbti2 = 'S';
+			}
+			
+			if(count3 >= 2){
+				mbti3 = 'F';
+			}
+			else{
+				mbti3 = 'T';
+			}
+			
+			if(count4 >= 2){
+				mbti4 = 'P';
+			}
+			else{
+				mbti4 = 'J';
+			}
+			console.log(mbti1+mbti2+mbti3+mbti4);
+			$("")
 		});
 		// 이전 버튼을 누르면 이전 페이지가 나오도록 구현
 		$(".btn-prev").not(":first").click(function(){
 			move(--index);
+			console.log(index);
 		});
 		
-		// 질문버튼 클릭시 색깔변하게
+		var mbti;
+		
+		// 질문버튼 클릭시 색깔변하게 
 		$(".btn-answer1").click(function(){
-			$(this).css("background-color", "blue");
+			// 선택된 값 저장
+			mbti = $(this).val();
+			$(this).parent("div").parent("div").find(".answer").text(mbti);
+			
+			// 색변경
+			$(this).css("background-color", "lightblue");
 			$(this).css("color", "white");
 			$(this).parent("div").parent("div").find(".btn-answer2").css("background-color", "white");
 			$(this).parent("div").parent("div").find(".btn-answer2").css("color","gray");
 		});
 		$(".btn-answer2").click(function(){
-			$(this).css("background-color", "blue");
+			// 선택된 값 저장		
+			mbti = $(this).val();
+			$(this).parent("div").parent("div").find(".answer").text(mbti);
+			
+			// 색변경
+			$(this).css("background-color", "lightblue");
 			$(this).css("color", "white");
 			$(this).parent("div").parent("div").find(".btn-answer1").css("background-color", "white");
 			$(this).parent("div").parent("div").find(".btn-answer1").css("color","gray");
 		});
+		
 		
 		function move(index){
 			$(".page").hide();
@@ -97,8 +182,8 @@
         </div>
       </div>
       
+      <!-- 2번째 페이지 -->
       <div class="container w500 m30 page">
-      	
       	<c:forEach var="mbtiSurveyDto" items="${list}">
 	      	<c:if test="${mbtiSurveyDto.surveyNo < 4}">
 		      	<div class="row center m50">
@@ -111,11 +196,89 @@
 			      	<div class="row">
 			      		<button value="I" class="btn fill btn-answer2">${mbtiSurveyDto.surveyAnswer2}</button>
 			      	</div>
+			      	<span class="answer"></span> <!-- span.text()로 값을 적힌 값을 쓸 수 있을 듯 -->
 		      	</div>
 	      	</c:if>
       	</c:forEach>
+		<span class="answer-record1"></span>
       	
+        <div class="row center">
+	       	<button type="button" class="btn btn-prev">이전</button>
+	       	<button type="button" class="btn btn-next">다음</button>
+        </div>
+      </div>
+      
+      <!-- 3번째 페이지 -->
+      <div class="container w500 m30 page">
+      	<c:forEach var="mbtiSurveyDto" items="${list}">
+	      	<c:if test="${mbtiSurveyDto.surveyNo >= 4 && mbtiSurveyDto.surveyNo < 7}">
+		      	<div class="row center m50">
+		      		<div class="row m30">
+			      		<span>Q${mbtiSurveyDto.surveyNo}.${mbtiSurveyDto.surveyQuestion}</span>
+			      	</div>
+			      	<div class="row">
+			      		<button value="N" class="btn fill btn-answer1">${mbtiSurveyDto.surveyAnswer1}</button>
+			      	</div>
+			      	<div class="row">
+			      		<button value="S" class="btn fill btn-answer2">${mbtiSurveyDto.surveyAnswer2}</button>
+			      	</div>
+			      	<span class="answer"></span> <!-- span.text()로 값을 적힌 값을 쓸 수 있을 듯 -->
+		      	</div>
+	      	</c:if>
+      	</c:forEach>
+		<span class="answer-record2"></span>
       	
+        <div class="row center">
+	       	<button type="button" class="btn btn-prev">이전</button>
+	       	<button type="button" class="btn btn-next">다음</button>
+        </div>
+      </div>
+      
+      <!-- 4번째 페이지 -->
+      <div class="container w500 m30 page">
+      	<c:forEach var="mbtiSurveyDto" items="${list}">
+	      	<c:if test="${mbtiSurveyDto.surveyNo >= 7 && mbtiSurveyDto.surveyNo < 10}">
+		      	<div class="row center m50">
+		      		<div class="row m30">
+			      		<span>Q${mbtiSurveyDto.surveyNo}.${mbtiSurveyDto.surveyQuestion}</span>
+			      	</div>
+			      	<div class="row">
+			      		<button value="F" class="btn fill btn-answer1">${mbtiSurveyDto.surveyAnswer1}</button>
+			      	</div>
+			      	<div class="row">
+			      		<button value="T" class="btn fill btn-answer2">${mbtiSurveyDto.surveyAnswer2}</button>
+			      	</div>
+			      	<span class="answer"></span> <!-- span.text()로 값을 적힌 값을 쓸 수 있을 듯 -->
+		      	</div>
+	      	</c:if>
+      	</c:forEach>
+		<span class="answer-record3"></span>
+      	
+        <div class="row center">
+	       	<button type="button" class="btn btn-prev">이전</button>
+	       	<button type="button" class="btn btn-next">다음</button>
+        </div>
+      </div>
+      
+      <!-- 5번째 페이지 -->
+      <div class="container w500 m30 page">
+      	<c:forEach var="mbtiSurveyDto" items="${list}">
+	      	<c:if test="${mbtiSurveyDto.surveyNo >= 10}">
+		      	<div class="row center m50">
+		      		<div class="row m30">
+			      		<span>Q${mbtiSurveyDto.surveyNo}.${mbtiSurveyDto.surveyQuestion}</span>
+			      	</div>
+			      	<div class="row">
+			      		<button value="P" class="btn fill btn-answer1">${mbtiSurveyDto.surveyAnswer1}</button>
+			      	</div>
+			      	<div class="row">
+			      		<button value="J" class="btn fill btn-answer2">${mbtiSurveyDto.surveyAnswer2}</button>
+			      	</div>
+			      	<span class="answer"></span> <!-- span.text()로 값을 적힌 값을 쓸 수 있을 듯 -->
+		      	</div>
+	      	</c:if>
+      	</c:forEach>
+		<span class="answer-record4"></span>
       	
         <div class="row center">
 	       	<button type="button" class="btn btn-prev">이전</button>
@@ -123,6 +286,7 @@
         </div>
       </div>
        
+       <!-- 6번째 페이지 -->
        <div class="container w500 m30 page">
        	<input type="hidden" name="memberMbti" class="mbti-result">
         <div class="row">
