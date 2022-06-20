@@ -36,10 +36,30 @@
 	
 	<insert id="create" parameterType="ClubDto">
 		insert into club(
-			club_no, club_name, club_category
+			club_no, club_leader, club_name, club_summary, 
+			club_main_category, club_sub_category, club_place
+			<if test="clubJoinQuestion1 != null">
+				, club_join_question1
+			</if>
+			<if test="clubJoinQuestion2 != null">
+				, club_join_question2
+			</if>
+			<if test="clubJoinQuestion3 != null">
+				, club_join_question3
+			</if>
 		)
 		values(
-			#{clubNo}, #{clubName}, #{clubCategory}
+			#{clubNo}, #{clubLeader}, #{clubName}, #{clubSummary}, 
+			#{clubMainCategory}, #{clubSubCategory}, #{clubPlace}
+			<if test="clubJoinQuestion1 != null">
+				, #{clubJoinQuestion1}
+			</if>
+			<if test="clubJoinQuestion2 != null">
+				, #{clubJoinQuestion2}
+			</if>
+			<if test="clubJoinQuestion3 != null">
+				, #{clubJoinQuestion3}
+			</if>
 		)
 	</insert>
 	

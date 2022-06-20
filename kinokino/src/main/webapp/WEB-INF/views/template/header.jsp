@@ -3,7 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:set var="memberId" value="${login}"></c:set>
+<c:set var="memberNo" value="${login}"></c:set>
 <c:set var="isLogin" value="${memberId != null}"></c:set>
 <c:set var="isAdmin" value="${auth == '관리자'}"></c:set>
 <c:set var="root" value="${pageContext.request.contextPath}"></c:set> 
@@ -29,7 +29,7 @@
 	<main>
 
 		<!-- 헤더(header) -->
-		<h4>로그인세션:${memberId}</h4>
+		<h4>로그인세션:${login}</h4>
 		<header>
 			<h1>
 				<a class="link" href="${root}">소모임 연습용 홈페이지</a>

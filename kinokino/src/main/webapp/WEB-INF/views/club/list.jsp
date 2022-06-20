@@ -32,7 +32,7 @@
 							${clubDto.clubName}
 						</a>
 					</td>
-					<td>${clubDto.clubCategory}</td>
+					<td>${clubDto.clubMainCategory}</td>
 				</tr>
 				</c:forEach>
 			</tbody>

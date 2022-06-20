@@ -16,4 +16,8 @@ public class ClubMemberDto {
 	private int clubNo;
 	private Date clubMemberDate;
 	private String clubMemberGrade;
+	private String clubMemberAnswer1;
+	private String clubMemberAnswer2;
+	private String clubMemberAnswer3;
+	private int clubMemberPermission;
 }
