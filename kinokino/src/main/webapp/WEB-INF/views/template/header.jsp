@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:set var="memberNo" value="${login}"></c:set>
-<c:set var="isLogin" value="${memberId != null}"></c:set>
+<c:set var="isLogin" value="${memberNo != null}"></c:set>
 <c:set var="isAdmin" value="${auth == '관리자'}"></c:set>
 <c:set var="root" value="${pageContext.request.contextPath}"></c:set> 
 

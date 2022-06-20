@@ -53,7 +53,7 @@ public class MemberController {
 			HttpSession session) {
 		MemberDto memberDto = memberDao.login(memberId, memberPw);
 		if(memberDto != null) {
-			session.setAttribute("login", memberDto.getMemberId());
+			session.setAttribute("login", memberDto.getMemberNo());
 			return "redirect:/";
 		}
 		else {

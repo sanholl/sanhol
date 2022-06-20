@@ -113,18 +113,35 @@
 		<h1>${clubDto.clubNo}번 소모임</h1>
 	</div>
 	
-	<!-- 채팅 -->
+	<div class="row right"><a href="${pageContext.request.contextPath}/club/join?clubNo=${clubDto.clubNo}" class="btn btn-link">소모임 가입하기</a></div>
 	
+	<!-- 채팅 -->
+	<div class="row center">
 	<h3>사용자 : ${login}</h3>
 	<h3>로그인 상태 : ${login != null}</h3>
-	<div class="row center">
+	<div class="row m30">
+		<h3>소모임 이름: ${clubDto.clubName}</h3>
+	</div>
+	<div class="row m30">
+		<h3>소모임 설명: ${clubDto.clubSummary}</h3>
+	</div>
+	<div class="row m30">
+		<h3>소모임 대분류: ${clubDto.clubMainCategory}</h3>
+	</div>
+	<div class="row m30">
+		<h3>소모임 소분류: ${clubDto.clubSubCategory}</h3>
+	</div>
+	<div class="row m30">
+		<h3>소모임 활동지역: ${clubDto.clubPlace}</h3>
+	</div>
+	<div class="row m30">
 		<input type="text" class="send-input">
 		<button class="btn-send">전송</button>
 	</div>
 
 	<!-- 메세지 출력 공간 -->
 	<div class="message-wrapper"></div>
-	
+	</div>
 </div>
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.boa.kinokino.entity.ClubDto;
+import com.boa.kinokino.entity.ClubMemberDto;
 import com.boa.kinokino.repository.ClubDao;
+import com.boa.kinokino.repository.ClubMemberDao;
 
 
 @Controller
@@ -22,6 +24,9 @@ public class ClubController {
 	
 	@Autowired
 	private ClubDao clubDao;
+	
+	@Autowired
+	private ClubMemberDao clubMemberDao;
 	
 	// 클럽 목록 
 	@GetMapping("/list")
@@ -48,6 +53,19 @@ public class ClubController {
 		ClubDto clubDto = clubDao.detail(clubNo);
 		model.addAttribute("clubDto",clubDto);
 		return "club/detail";
+	}
+	
+	// 클럽 가입 
+	@GetMapping("/join")
+	public String clubJoin(@RequestParam int clubNo, Model model) {
+		ClubDto clubDto = clubDao.detail(clubNo);
+		model.addAttribute("clubDto",clubDto);
+		return "club/join";
+	}
+	@PostMapping("/join")
+	public String clubJoin(@ModelAttribute ClubMemberDto clubMemberDto) {
+		clubMemberDao.join(clubMemberDto);
+		return "redirect:detail/"+clubMemberDto.getClubNo();
 	}
 	
 }

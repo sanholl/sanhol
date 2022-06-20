@@ -11,7 +11,7 @@
 		// 처음 페이지를 제외하고 모두 숨김 처리
 		move(index);
 		
-		// mbti 검사 변수
+		// 각 mbti count 변수
 		var count1 = 0;
 		var count2 = 0;
 		var count3 = 0;
@@ -19,14 +19,14 @@
 		var count5 = 0;
 		
 		// mbti 결과 저장 변수
-		var mbti1;
-		var mbti2;
-		var mbti3;
-		var mbti4;
+		var mbti1 = "";
+		var mbti2 = "";
+		var mbti3 = null;
+		var mbti4 = null;
+		
 		// 다음 버튼을 누르면 다음 페이지가 나오도록 구현
 		$(".btn-next").not(":last").click(function(){
 			move(++index);
-			console.log(index); // 확인용
 			
 			if(index == 5){
 				$(".answer").each(function(){
@@ -48,43 +48,48 @@
 						count5++;
 					}
 				});
+				
+				// mbti 결과 도출
+				if(count1 >= 2){
+					mbti1 = 'E';
+				}
+				else{
+					mbti1 = 'I';
+				}
+				
+				if(count2 >= 2){
+					mbti2 = 'N';
+				}
+				else{
+					mbti2 = 'S';
+				}
+				
+				if(count3 >= 2){
+					mbti3 = 'F';
+				}
+				else{
+					mbti3 = 'T';
+				}
+				
+				if(count4 >= 2){
+					mbti4 = 'P';
+				}
+				else{
+					mbti4 = 'J';
+				}
+				// mbti결과값 input에 저장
+				$("input[name=memberMbti]").val(mbti1+mbti2+mbti3+mbti4);
+				// 확인용
+				console.log($("input[name=memberMbti]").val());
 			}
-				console.log(count1);
+				// 확인용 
+				/* console.log(count1);
 				console.log(count2);
 				console.log(count3);
 				console.log(count4);
-				console.log(count5);
+				console.log(count5); */
 			
-			// mbti 결과 도출
-			if(count1 >= 2){
-				mbti1 = 'E';
-			}
-			else{
-				mbti1 = 'I';
-			}
-			
-			if(count2 >= 2){
-				mbti2 = 'N';
-			}
-			else{
-				mbti2 = 'S';
-			}
-			
-			if(count3 >= 2){
-				mbti3 = 'F';
-			}
-			else{
-				mbti3 = 'T';
-			}
-			
-			if(count4 >= 2){
-				mbti4 = 'P';
-			}
-			else{
-				mbti4 = 'J';
-			}
-			console.log(mbti1+mbti2+mbti3+mbti4);
-			$("")
+
 		});
 		// 이전 버튼을 누르면 이전 페이지가 나오도록 구현
 		$(".btn-prev").not(":first").click(function(){
@@ -94,7 +99,7 @@
 		
 		var mbti;
 		
-		// 질문버튼 클릭시 색깔변하게 
+		// 질문버튼 클릭시 기능
 		$(".btn-answer1").click(function(){
 			// 선택된 값 저장
 			mbti = $(this).val();
@@ -191,10 +196,10 @@
 			      		<span>Q${mbtiSurveyDto.surveyNo}.${mbtiSurveyDto.surveyQuestion}</span>
 			      	</div>
 			      	<div class="row">
-			      		<button value="E" class="btn fill btn-answer1">${mbtiSurveyDto.surveyAnswer1}</button>
+			      		<button type="button" value="E" class="btn fill btn-answer1">${mbtiSurveyDto.surveyAnswer1}</button>
 			      	</div>
 			      	<div class="row">
-			      		<button value="I" class="btn fill btn-answer2">${mbtiSurveyDto.surveyAnswer2}</button>
+			      		<button type="button" value="I" class="btn fill btn-answer2">${mbtiSurveyDto.surveyAnswer2}</button>
 			      	</div>
 			      	<span class="answer"></span> <!-- span.text()로 값을 적힌 값을 쓸 수 있을 듯 -->
 		      	</div>
@@ -217,10 +222,10 @@
 			      		<span>Q${mbtiSurveyDto.surveyNo}.${mbtiSurveyDto.surveyQuestion}</span>
 			      	</div>
 			      	<div class="row">
-			      		<button value="N" class="btn fill btn-answer1">${mbtiSurveyDto.surveyAnswer1}</button>
+			      		<button type="button" value="N" class="btn fill btn-answer1">${mbtiSurveyDto.surveyAnswer1}</button>
 			      	</div>
 			      	<div class="row">
-			      		<button value="S" class="btn fill btn-answer2">${mbtiSurveyDto.surveyAnswer2}</button>
+			      		<button type="button" value="S" class="btn fill btn-answer2">${mbtiSurveyDto.surveyAnswer2}</button>
 			      	</div>
 			      	<span class="answer"></span> <!-- span.text()로 값을 적힌 값을 쓸 수 있을 듯 -->
 		      	</div>
@@ -243,10 +248,10 @@
 			      		<span>Q${mbtiSurveyDto.surveyNo}.${mbtiSurveyDto.surveyQuestion}</span>
 			      	</div>
 			      	<div class="row">
-			      		<button value="F" class="btn fill btn-answer1">${mbtiSurveyDto.surveyAnswer1}</button>
+			      		<button type="button" value="F" class="btn fill btn-answer1">${mbtiSurveyDto.surveyAnswer1}</button>
 			      	</div>
 			      	<div class="row">
-			      		<button value="T" class="btn fill btn-answer2">${mbtiSurveyDto.surveyAnswer2}</button>
+			      		<button type="button" value="T" class="btn fill btn-answer2">${mbtiSurveyDto.surveyAnswer2}</button>
 			      	</div>
 			      	<span class="answer"></span> <!-- span.text()로 값을 적힌 값을 쓸 수 있을 듯 -->
 		      	</div>
@@ -269,10 +274,10 @@
 			      		<span>Q${mbtiSurveyDto.surveyNo}.${mbtiSurveyDto.surveyQuestion}</span>
 			      	</div>
 			      	<div class="row">
-			      		<button value="P" class="btn fill btn-answer1">${mbtiSurveyDto.surveyAnswer1}</button>
+			      		<button type="button" value="P" class="btn fill btn-answer1">${mbtiSurveyDto.surveyAnswer1}</button>
 			      	</div>
 			      	<div class="row">
-			      		<button value="J" class="btn fill btn-answer2">${mbtiSurveyDto.surveyAnswer2}</button>
+			      		<button type="button" value="J" class="btn fill btn-answer2">${mbtiSurveyDto.surveyAnswer2}</button>
 			      	</div>
 			      	<span class="answer"></span> <!-- span.text()로 값을 적힌 값을 쓸 수 있을 듯 -->
 		      	</div>
@@ -288,7 +293,7 @@
        
        <!-- 6번째 페이지 -->
        <div class="container w500 m30 page">
-       	<input type="hidden" name="memberMbti" class="mbti-result">
+       	<input type="hidden" name="memberMbti">
         <div class="row">
           <button type="submit" class="btn btn-primary fill">가입하기</button>
         </div>
