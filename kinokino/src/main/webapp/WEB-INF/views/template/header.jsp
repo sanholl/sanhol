@@ -55,7 +55,7 @@
 					</ul>
 				</li>
 				<li>
-					<a class="link" href="${root}/club/list">소모임</a>
+					<a class="link" href="${root}/club/">소모임</a>
 				</li>
 				<!-- 우측 메뉴 : 회원용 -->
 				<%-- 로그인 상태에 따라 다른 메뉴를 출력 --%>

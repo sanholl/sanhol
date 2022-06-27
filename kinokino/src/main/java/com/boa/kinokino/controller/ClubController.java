@@ -27,9 +27,9 @@ public class ClubController {
 	
 	@Autowired
 	private ClubMemberDao clubMemberDao;
-	
-	// 클럽 목록 
-	@GetMapping("/list")
+//	
+//	// 클럽 목록 
+	@GetMapping("/")
 	public String clubList(Model model) {
 		List<ClubDto> list = clubDao.list();
 		model.addAttribute("list",list);
