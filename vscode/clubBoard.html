@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <!-- 특정 영역을 생성하여 이 부분만 vue로 제어한다 -->
+    <div id="app" class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+                <div class="border border-secondary text-dark p-4 mt-2 col-lg-8 offset-lg-4 col-md-8 offset-md-4 col-sm-8 offset-sm-4 rounded">
+                    <h4><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <polyline points="5 12 3 12 12 3 21 12 19 12" />
+                        <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                        <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+                      </svg>소모임 홈</h4>
+                    <hr>
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                운동 소모임
+                            </button>
+                          </h2>
+                          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <a class="dropdown-item" href="#">게시판</a>
+                                <a class="dropdown-item" href="#">실시간채팅</a>
+                                <a class="dropdown-item" href="#">사진첩</a>
+                                <a class="dropdown-item" href="#">소모임 설정</a>
+                                <a class="dropdown-item" href="#">일정</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                게임 소모임
+                            </button>
+                          </h2>
+                          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <a class="dropdown-item" href="#">게시판</a>
+                                <a class="dropdown-item" href="#">실시간채팅</a>
+                                <a class="dropdown-item" href="#">사진첩</a>
+                                <a class="dropdown-item" href="#">소모임 설정</a>
+                                <a class="dropdown-item" href="#">일정</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                개발자 소모임
+                            </button>
+                          </h2>
+                          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <a class="dropdown-item" href="#">게시판</a>
+                                <a class="dropdown-item" href="#">실시간채팅</a>
+                                <a class="dropdown-item" href="#">사진첩</a>
+                                <a class="dropdown-item" href="#">소모임 설정</a>
+                                <a class="dropdown-item" href="#">일정</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <hr>
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pinned" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M9 4v6l-2 4v2h10v-2l-2 -4v-6" />
+                                    <line x1="12" y1="16" x2="12" y2="21" />
+                                    <line x1="8" y1="4" x2="16" y2="4" />
+                                  </svg>찜한 소모임
+                            </button>
+                          </h2>
+                          <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <a class="dropdown-item" href="#">소모임1</a>
+                                <a class="dropdown-item" href="#">소모임2</a>
+                                <a class="dropdown-item" href="#">소모임3</a>
+                                <a class="dropdown-item" href="#">소모임4</a>
+                                <a class="dropdown-item" href="#">소모임5</a>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <hr> 
+                    <div class="accordion" id="accordionExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="headingFive">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-adjustments-horizontal" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <circle cx="14" cy="6" r="2" />
+                                    <line x1="4" y1="6" x2="12" y2="6" />
+                                    <line x1="16" y1="6" x2="20" y2="6" />
+                                    <circle cx="8" cy="12" r="2" />
+                                    <line x1="4" y1="12" x2="6" y2="12" />
+                                    <line x1="10" y1="12" x2="20" y2="12" />
+                                    <circle cx="17" cy="18" r="2" />
+                                    <line x1="4" y1="18" x2="15" y2="18" />
+                                    <line x1="19" y1="18" x2="20" y2="18" />
+                                  </svg>더보기
+                            </button>
+                          </h2>
+                          <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <a class="dropdown-item" href="#">토픽</a>
+                                <a class="dropdown-item" href="#">설정</a>
+                                <a class="dropdown-item" href="#">고객센터</a>
+                                <hr>
+                                <a class="dropdown-item" href="#">광고1</a>
+                                <a class="dropdown-item" href="#">광고2</a>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6" >
+                <div class="text-end" >
+                    <button class="btn btn-primary"  @click="status=1">게시글 글쓰기</button>
+                    <button class="btn btn-secondary" @click="status=0" v-show ="status">닫기</button>
+                </div>
+                <div class="border border-secondary text-dark p-4 mt-2 col-lg-12 col-md-12 col-sm-12 rounded" v-show="status">
+                    <form>
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <a href=""><img src="../semi/image/asd.jpg" style="width:50px; height:50px" class="img-thumbnail"></a>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8">
+                            <ul class="navbar-nav">
+                                <li class="navi-item dropdown">
+                                    <input type="text"class="nav-link dropdown-toggle form-control-plaintext" name="memberId" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" value="beefjerky">
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">프로필</a></li>
+                                        <li><a class="dropdown-item" href="#">게시글</a></li>
+                                        <li><a class="dropdown-item" href="#">차단하기</a></li>
+                                        <li><a class="dropdown-item" href="#">신고하기</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                              </svg>
+                        </div>
+                    </div>
+                    <textarea cols="90" rows="6" class="mt-5 form-control" name="boardContents"></textarea>
+                    <div class="mt-1">
+                        <div>
+                            <a href="#" title="사진 첨부">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <line x1="15" y1="8" x2="15.01" y2="8" />
+                                    <rect x="4" y="4" width="16" height="16" rx="3" />
+                                    <path d="M4 15l4 -4a3 5 0 0 1 3 0l5 5" />
+                                    <path d="M14 14l1 -1a3 5 0 0 1 3 0l2 2" />
+                                  </svg>
+                            </a>
+                        </div>
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-success text-end">등록</button>
+                        </div>
+                    </div>
+                </form>
+                </div>
+                <div class="border border-secondary text-dark p-4 mt-2 col-lg-12 col-md-12 col-sm-12 rounded">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <a><img src="../semi/image/asd.jpg" style="width:50px; height:50px" class="img-thumbnail"></a>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8">
+                            <ul class="navbar-nav">
+                                <li class="navi-item dropdown">
+                                    <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">JAVA마스터</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">프로필</a></li>
+                                        <li><a class="dropdown-item" href="#">게시글</a></li>
+                                        <li><a class="dropdown-item" href="#">차단하기</a></li>
+                                        <li><a class="dropdown-item" href="#">신고하기</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                              </svg>
+                        </div>
+                    </div>
+                    <p>게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용      </p>
+                    <div class="mt-5">
+                        <h6>2022-02-11</h6>
+                        <a href="#" title="댓글">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-circle-2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />
+                                <line x1="12" y1="12" x2="12" y2="12.01" />
+                                <line x1="8" y1="12" x2="8" y2="12.01" />
+                                <line x1="16" y1="12" x2="16" y2="12.01" />
+                              </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="border border-secondary text-dark p-4 mt-2 col-lg-12 col-md-12 col-sm-12 rounded">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <a><img src="../semi/image/asd.jpg" style="width:50px; height:50px" class="img-thumbnail"></a>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8">
+                            <ul class="navbar-nav">
+                                <li class="navi-item dropdown">
+                                    <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">야너두?</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">프로필</a></li>
+                                        <li><a class="dropdown-item" href="#">게시글</a></li>
+                                        <li><a class="dropdown-item" href="#">차단하기</a></li>
+                                        <li><a class="dropdown-item" href="#">신고하기</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                              </svg>좋아요
+                        </div>
+                    </div>
+                    <p>게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용      </p>
+                    <div class="mt-5">
+                        <h6>2022-02-11</h6>
+                        <a href="#" title="댓글">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-circle-2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />
+                                <line x1="12" y1="12" x2="12" y2="12.01" />
+                                <line x1="8" y1="12" x2="8" y2="12.01" />
+                                <line x1="16" y1="12" x2="16" y2="12.01" />
+                              </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="border border-secondary text-dark p-4 mt-2 col-lg-12 col-md-12 col-sm-12 rounded">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <a><img src="../semi/image/asd.jpg" style="width:50px; height:50px" class="img-thumbnail"></a>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8">
+                            <ul class="navbar-nav">
+                                <li class="navi-item dropdown">
+                                    <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">spring마스터</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">프로필</a></li>
+                                        <li><a class="dropdown-item" href="#">게시글</a></li>
+                                        <li><a class="dropdown-item" href="#">차단하기</a></li>
+                                        <li><a class="dropdown-item" href="#">신고하기</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                              </svg>
+                        </div>
+                    </div>
+                    <p>게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용      </p>
+                    <div class="mt-5">
+                        <h6>2022-02-11</h6>
+                        <a href="#" title="댓글">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-circle-2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />
+                                <line x1="12" y1="12" x2="12" y2="12.01" />
+                                <line x1="8" y1="12" x2="8" y2="12.01" />
+                                <line x1="16" y1="12" x2="16" y2="12.01" />
+                              </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="border border-secondary text-dark p-4 mt-2 col-lg-12 col-md-12 col-sm-12 rounded">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <a><img src="../semi/image/asd.jpg" style="width:50px; height:50px" class="img-thumbnail"></a>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8">
+                            <ul class="navbar-nav">
+                                <li class="navi-item dropdown">
+                                    <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">폭염주의보</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">프로필</a></li>
+                                        <li><a class="dropdown-item" href="#">게시글</a></li>
+                                        <li><a class="dropdown-item" href="#">차단하기</a></li>
+                                        <li><a class="dropdown-item" href="#">신고하기</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                              </svg>
+                        </div>
+                    </div>
+                    <p>게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용      </p>
+                    <div class="mt-5">
+                        <h6>2022-02-11</h6>
+                        <a href="#" title="댓글">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-circle-2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />
+                                <line x1="12" y1="12" x2="12" y2="12.01" />
+                                <line x1="8" y1="12" x2="8" y2="12.01" />
+                                <line x1="16" y1="12" x2="16" y2="12.01" />
+                              </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="border border-secondary text-dark p-4 mt-2 col-lg-12 col-md-12 col-sm-12 rounded">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <a><img src="../semi/image/asd.jpg" style="width:50px; height:50px" class="img-thumbnail"></a>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8">
+                            <ul class="navbar-nav">
+                                <li class="navi-item dropdown">
+                                    <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">나초</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">프로필</a></li>
+                                        <li><a class="dropdown-item" href="#">게시글</a></li>
+                                        <li><a class="dropdown-item" href="#">차단하기</a></li>
+                                        <li><a class="dropdown-item" href="#">신고하기</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                              </svg>
+                        </div>
+                    </div>
+                    <p>게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용      </p>
+                    <div class="mt-5">
+                        <h6>2022-02-11</h6>
+                        <a href="#" title="댓글">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-circle-2" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M3 20l1.3 -3.9a9 8 0 1 1 3.4 2.9l-4.7 1" />
+                                <line x1="12" y1="12" x2="12" y2="12.01" />
+                                <line x1="8" y1="12" x2="8" y2="12.01" />
+                                <line x1="16" y1="12" x2="16" y2="12.01" />
+                              </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="border border-secondary text-dark p-4 mt-2 col-lg-12 col-md-12 col-sm-12 rounded" v-show="more">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <a><img src="../semi/image/asd.jpg" style="width:50px; height:50px" class="img-thumbnail"></a>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8">
+                            <ul class="navbar-nav">
+                                <li class="navi-item dropdown">
+                                    <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">김대중</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">프로필</a></li>
+                                        <li><a class="dropdown-item" href="#">게시글</a></li>
+                                        <li><a class="dropdown-item" href="#">차단하기</a></li>
+                                        <li><a class="dropdown-item" href="#">신고하기</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                              </svg>
+                        </div>
+                    </div>
+                    <p>게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용      </p>
+                    <div class="mt-5">
+                        <h6>2022-02-11</h6>
+                    </div>
+                </div>
+                <div class="border border-secondary text-dark p-4 mt-2 col-lg-12 col-md-12 col-sm-12 rounded" v-show="more">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <a><img src="../semi/image/asd.jpg" style="width:50px; height:50px" class="img-thumbnail"></a>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8">
+                            <ul class="navbar-nav">
+                                <li class="navi-item dropdown">
+                                    <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">전두환</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">프로필</a></li>
+                                        <li><a class="dropdown-item" href="#">게시글</a></li>
+                                        <li><a class="dropdown-item" href="#">차단하기</a></li>
+                                        <li><a class="dropdown-item" href="#">신고하기</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                              </svg>
+                        </div>
+                    </div>
+                    <p>게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용      </p>
+                    <div class="mt-5">
+                        <h6>2022-02-11</h6>
+                    </div>
+                </div>
+                <div class="border border-secondary text-dark p-4 mt-2 col-lg-12 col-md-12 col-sm-12 rounded" v-show="more">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <a><img src="../semi/image/asd.jpg" style="width:50px; height:50px" class="img-thumbnail"></a>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8">
+                            <ul class="navbar-nav">
+                                <li class="navi-item dropdown">
+                                    <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">윤보선</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">프로필</a></li>
+                                        <li><a class="dropdown-item" href="#">게시글</a></li>
+                                        <li><a class="dropdown-item" href="#">차단하기</a></li>
+                                        <li><a class="dropdown-item" href="#">신고하기</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                              </svg>
+                        </div>
+                    </div>
+                    <p>게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용      </p>
+                    <div class="mt-5">
+                        <h6>2022-02-11</h6>
+                    </div>
+                </div>
+                <div class="border border-secondary text-dark p-4 mt-2 col-lg-12 col-md-12 col-sm-12 rounded" v-show="more">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <a><img src="../semi/image/asd.jpg" style="width:50px; height:50px" class="img-thumbnail"></a>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8">
+                            <ul class="navbar-nav">
+                                <li class="navi-item dropdown">
+                                    <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">박정희</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">프로필</a></li>
+                                        <li><a class="dropdown-item" href="#">게시글</a></li>
+                                        <li><a class="dropdown-item" href="#">차단하기</a></li>
+                                        <li><a class="dropdown-item" href="#">신고하기</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                              </svg>
+                        </div>
+                    </div>
+                    <p>게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용      </p>
+                    <div class="mt-5">
+                        <h6>2022-02-11</h6>
+                    </div>
+                </div>
+                <div class="border border-secondary text-dark p-4 mt-2 col-lg-12 col-md-12 col-sm-12 rounded" v-show="more">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <a><img src="../semi/image/asd.jpg" style="width:50px; height:50px" class="img-thumbnail"></a>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8">
+                            <ul class="navbar-nav">
+                                <li class="navi-item dropdown">
+                                    <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">노태우</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">프로필</a></li>
+                                        <li><a class="dropdown-item" href="#">게시글</a></li>
+                                        <li><a class="dropdown-item" href="#">차단하기</a></li>
+                                        <li><a class="dropdown-item" href="#">신고하기</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                              </svg>
+                        </div>
+                    </div>
+                    <p>게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용      </p>
+                    <div class="mt-5">
+                        <h6>2022-02-11</h6>
+                    </div>
+                </div>
+                <div class="border border-secondary text-dark p-4 mt-2 col-lg-12 col-md-12 col-sm-12 rounded" v-show="more">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <a><img src="../semi/image/asd.jpg" style="width:50px; height:50px" class="img-thumbnail"></a>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8">
+                            <ul class="navbar-nav">
+                                <li class="navi-item dropdown">
+                                    <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">이승만</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">프로필</a></li>
+                                        <li><a class="dropdown-item" href="#">게시글</a></li>
+                                        <li><a class="dropdown-item" href="#">차단하기</a></li>
+                                        <li><a class="dropdown-item" href="#">신고하기</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                              </svg>
+                        </div>
+                    </div>
+                    <p>게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용      </p>
+                    <div class="mt-5">
+                        <h6>2022-02-11</h6>
+                    </div>
+                </div>
+                <div class="border border-secondary text-dark p-4 mt-2 col-lg-12 col-md-12 col-sm-12 rounded" v-show="more">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <a><img src="../semi/image/asd.jpg" style="width:50px; height:50px" class="img-thumbnail"></a>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-8">
+                            <ul class="navbar-nav">
+                                <li class="navi-item dropdown">
+                                    <a href="" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">testuser1234</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">프로필</a></li>
+                                        <li><a class="dropdown-item" href="#">게시글</a></li>
+                                        <li><a class="dropdown-item" href="#">차단하기</a></li>
+                                        <li><a class="dropdown-item" href="#">신고하기</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                              </svg>
+                        </div>
+                    </div>
+                    <p>게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용      </p>
+                    <div class="mt-5">
+                        <h6>2022-02-11</h6>
+                    </div>
+                </div>
+                
+                <div class="row mt-2">
+                    <div class="d-grid">
+                        <button class="btn btn-primary" @click="more=1">더보기</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+            <div class="border border-secondary text-dark p-4 mt-2 col-lg-8 col-md-8 col-sm-8 rounded">
+                <div class="row">   
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round" class="self-center ml-2 icon icon-tabler icon-tabler-search"><path stroke="none" d="M0 0h24v24H0z"></path><circle cx="10" cy="10" r="7"></circle><line x1="21" y1="21" x2="15" y2="15"></line></svg></span>
+                        <input type="text" class="form-control" placeholder="검색" aria-label="Username" aria-describedby="basic-addon1">
+                      </div>
+                </div>
+                    <hr>
+                    <h3>인기 게시글</h3>
+                    <h4>- 인기 1</h4>
+                    <h4>- 인기 1</h4>
+                    <h4>- 인기 1</h4>
+                    <hr>
+                    <h3>모임 일정</h3> 
+                    <h4>- 일정 1</h4>
+                    <h4>- 일정 2</h4>
+                    <h4>- 일정 3</h4>
+                    <h4>- 일정 4</h4>
+                    <hr> 
+                    <h3>추천 소모임</h3>
+                    <h4>- 소모임 1</h4>
+                    <h4>- 소모임 2</h4>
+                    <hr>
+            </div>
+        </div>
+        </div>
+    </div>
+     <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">프로필</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="card" style="width: 18rem;">
+                <img src="/semi/image/asd.jpg" class="card-img-top" alt="...">
+            </div>
+        </div>
+        <div class="col p-4">
+        <h4>이메일: testuser123@xxxx.xxx</h4><br>
+        <h4>관심 지역1: 강남</h4><br>
+        <h4>관심 지역2: 분당</h4><br>
+        <h4>관심 지역3: 판교</h4><br>
+        <h4>관심 분야1: 여행</h4><br>
+        <h4> 관심 분야2: 술</h4><br>
+        <h4>관심 분야3: 음악</h4><br>
+        <h4>마지막 로그인:2022-02-01</h4><br>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-bs-dismiss="modal">차단하기</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">신고하기</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+
+    <!-- vue js도 lazy loading을 사용한다 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        //div[id=app]을 제어할 수 있는 Vue instance를 생성
+        const app = Vue.createApp({
+            //data : 화면을 구현하는데 필요한 데이터를 작성한다.
+            data(){
+                return {
+                    status:0,
+                    more:0
+                };
+            },
+            //computed : data를 기반으로 하여 실시간 계산이 필요한 경우 작성한다.
+            // - 3줄보다 많다면 사용하지 않는 것을 권장한다(복잡한 계산 시 성능 저하가 발생)
+            computed:{
+                
+            },
+            method:{
+
+            },
+        });
+        app.mount("#app");
+        const myModal = document.getElementById('myModal')
+        const myInput = document.getElementById('myInput')
+
+        myModal.addEventListener('shown.bs.modal', () => {
+         myInput.focus()
+        });
+    </script>
+</body>
+</html>

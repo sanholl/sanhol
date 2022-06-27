@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VueJS Form validation</title>
+  </head>
+  <body>
+    <!-- 특정 영역을 생성하여 이 부분만 vue로 제어한다 -->
+    <div id="app">
+      <h1>회원 가입</h1>
+      <!-- <form v-on:submit="sendForm"> -->
+      <form v-on:submit="sendForm($event)">
+        <input type="text" name="memberId" v-model="memberId" placeholder="아이디" />
+        <br /><br />
+
+        <!-- 
+                v-bind를 이용하여 특정 속성을 Vue에 있는 값으로 교체할 수 있다 
+                - type을 bind하고 싶다면 v-bind:type="" 형태로 작성한다
+                - 다른 항목을 bind하고 싶다면 v-bind: 뒤에 항목명과 데이터를 작성한다
+                - 줄여서 :type과 같이 쓸 수도 있다(축약형 명령)
+            -->
+        <input v-bind:type="passwordInputType" name="memberPw" v-model="memberPw" placeholder="비밀번호" />
+        <label><input type="checkbox" v-model="showPassword" />비밀번호 표시</label>
+        <br /><br />
+        <input v-bind:type="passwordInputType" v-model="memberPwAgain" placeholder="비밀번호 확인" />
+        <br /><br />
+        <input type="submit" value="가입" />
+      </form>
+    </div>
+
+    <!-- vue js도 lazy loading을 사용한다 -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      //div[id=app]을 제어할 수 있는 Vue instance를 생성
+      const app = Vue.createApp({
+        //data : 화면을 구현하는데 필요한 데이터를 작성한다.
+        data() {
+          return {
+            memberId: "",
+            memberPw: "",
+            memberPwAgain: "",
+            showPassword: false,
+          };
+        },
+        //computed : data를 기반으로 하여 실시간 계산이 필요한 경우 작성한다.
+        // - 3줄보다 많다면 사용하지 않는 것을 권장한다(복잡한 계산 시 성능 저하가 발생)
+        computed: {
+          isMemberIdValid() {
+            const regex = /^[a-z][a-z0-9]{7,19}$/;
+            return regex.test(this.memberId);
+          },
+          isMemberPwValid() {
+            const regex = /^[A-Za-z0-9!@#$%]{8,16}$/;
+            return regex.test(this.memberPw);
+          },
+          isMemberPwAgainValid() {
+            //return 비밀번호가 있고 && 비밀번호가 일치하는가;
+            //return this.memberPw.length > 0 && this.memberPw == this.memberPwAgain;
+            return this.isMemberPwValid && this.memberPw == this.memberPwAgain;
+          },
+          isFormValid() {
+            return this.isMemberIdValid && this.isMemberPwValid && this.isMemberPwAgainValid;
+          },
+          passwordInputType() {
+            return this.showPassword ? "text" : "password";
+          },
+        },
+        //methods : 애플리케이션 내에서 언제든 호출 가능한 코드 집합이 필요한 경우 작성한다.
+        methods: {
+          sendForm(e) {
+            if (this.isFormValid == false) {
+              e.preventDefault();
+            }
+          },
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

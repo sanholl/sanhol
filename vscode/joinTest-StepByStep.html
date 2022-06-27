@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VueJS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.1.3/darkly/bootstrap.min.css" integrity="sha512-ZdxIsDOtKj2Xmr/av3D/uo1g15yxNFjkhrcfLooZV5fW0TT7aF7Z3wY1LOA16h0VgFLwteg14lWqlYUQK3to/w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <!-- 특정 영역을 생성하여 이 부분만 vue로 제어한다. -->
+    <div id="app">
+      <form>
+        <div>
+          <h1>1단계</h1>
+          아이디 :
+          <input type="text" name="memberId" v-model="member.memberId" /><br /><br />
+          비밀번호 :
+          <input type="password" name="memberPw" v-model="member.memberPw" /><br /><br />
+        </div>
+        <div v-show="member.firstStepValid">
+          <h1>2단계</h1>
+          닉네임 :
+          <input type="text" name="memberNick" v-model="member.memberNick" />
+        </div>
+        <div v-show="member.secondStepValid">
+          <h1>3단계</h1>
+          이메일 :
+          <input type="email" name="memberEmail" v-model="member.memberEmail" />
+          <br /><br />
+          전화번호 :
+          <input type="tel" name="memberPhone" v-model="member.memberPhone" />
+          <br /><br />
+        </div>
+        <button type="submit" v-show="member.allStepValid" class="btn btn-primary">가입하기</button>
+      </form>
+    </div>
+    <!-- vue js도 lazy loading을 사용한다. -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // div[id=app]을 제어할 수 있는 Vue instance를 생성
+      const app = Vue.createApp({
+        // data : 화면을 구현하는데 필요한 데이터를 작성해둔다
+        data() {
+          return {
+            member: {
+              memberId: "",
+              memberPw: "",
+              memberNick: "",
+              memberEmail: "",
+              memberPhone: "",
+              get memberIdValid() {
+                return this.memberId.length > 0;
+              },
+              get memberPwValid() {
+                return this.memberPw.length > 0;
+              },
+              get firstStepValid() {
+                return this.memberIdValid && this.memberPwValid;
+              },
+              get memberNickValid() {
+                return this.memberNick.length > 0;
+              },
+              get secondStepValid() {
+                return this.firstStepValid && this.memberNickValid;
+              },
+              get memberEmailValid() {
+                return this.memberEmail.length > 0;
+              },
+              get memberPhoneValid() {
+                return this.memberPhone.length > 0;
+              },
+              get allStepValid() {
+                return this.secondStepValid && this.memberEmailValid && this.memberPhoneValid;
+              },
+            },
+          };
+        },
+        // computed : data를 기반으로 하여 실시간 계산이 필요한 경우 작성한다.
+        // - 3줄보다 많다면 사용하지 않는 것을 권장한다(복잡한 계산 시 성능 저하가 발생)
+        computed: {},
+        // methods : 애플리케이션 내에서 언제든 호출 가능한 코드 집합이 필요한 경우 작성한다.
+        methods: {},
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>
